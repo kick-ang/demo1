@@ -1,0 +1,1 @@
+﻿var app = angular.module('carapp', ['checklist-model','ngRoute', 'ngMessages']);

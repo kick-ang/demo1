@@ -1,0 +1,80 @@
+﻿
+<html>
+<head>
+   
+</head>
+<body>
+    
+    <form name="exampleForm" class="form-horizontal" ng-submit="saveCar();" novalidate>
+     <div class="page-header"><h1>
+        {{PageName}}</h1></div>
+
+    
+     <div class="form-group">
+        <div class="control-label  col-md-2">
+            <b>Name :</b></div>
+       <div class="col-md-3">
+            <input type="text" name="name" class="form-control" placeholder="Enter Name" ng-model="car.name" required>
+        </div> 
+        <div class="form-group" ng-messages="exampleForm.name.$error" ng-show="exampleForm.name.$touched && exampleForm.name.$invalid">
+            <p ng-message="required">This field is required </p>
+        </div>       
+    </div>
+
+    
+     <div class="form-group">
+        <div class="control-label  col-md-2">
+            <b>Model :</b></div>
+       <div class="col-md-3">
+            <input type="text" name="model" class="form-control" placeholder="Enter model" ng-model="car.model" required>
+        </div> 
+        <div class="form-group" ng-messages="exampleForm.model.$error" ng-show="exampleForm.model.$touched && exampleForm.model.$invalid">
+            <p ng-message="required">This field is required </p>
+        </div>       
+    </div>
+
+
+    <div class="form-group">
+        <div class="control-label  col-md-2">
+            <b>Car Type :</b></div>
+       <div class="col-md-3">
+            <select name="cartype" class="form-control" ng-model="car.cartype" ng-options="cartype as cartype.detail for cartype in cartypeDetail track by cartype.cartype_ID" required></select>
+        </div> 
+        <div class="form-group" ng-messages="exampleForm.cartype.$error" ng-show="exampleForm.cartype.$touched && exampleForm.cartype.$invalid">
+            <p ng-message="required">This field is required </p>
+        </div>       
+    </div>
+
+      <div class="form-group">
+        <div class="control-label col-md-2">
+            <b>terrains :</b></div>
+        <div class="col-md-8">
+            <label class="checkbox-inline" ng-repeat="t in terrains">
+                <input type="checkbox"  checklist-model="car.terrain" checklist-value="t" >
+                {{t.name}}
+            </label>
+        </div>
+    </div>
+
+
+        <div class="form-group">
+        <div class="control-label col-md-2">
+            <b>price :</b></div>
+        <div class="col-md-8">
+            <input type="number" ng-model="car.price" required />
+        </div>
+    </div>
+
+     <div class="form-group">
+        <div style="height: 30px">
+        </div>
+        <div align="center">
+            <button type="submit" class="btn btn-info" ng-click="newCar();" ng-disabled="!exampleForm.$valid">
+                New</button>
+                  <button type="submit" class="btn btn-success" ng-disabled="!exampleForm.$valid">
+                {{btnName}}</button></div>        
+    </div>
+
+    </form>
+</body>
+</html>
