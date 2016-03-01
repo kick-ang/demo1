@@ -1,0 +1,57 @@
+﻿<div>
+      <div class="page-header"><h1>
+        List of cars</h1></div>
+    <div class="form-group">
+        <div ng-show="showMessage" class="alert alert-success">{{message}}</div>
+        <div style="align:right">
+        </div>
+        <table class="table table-bordered table-hover" ng-show="studentinDb.length > 0">
+        <thead>
+            <tr>
+                <th>
+                    <b>First Name</b>
+                </th>
+                <th>
+                    <b>Last Name</b>
+                </th>
+                <th>
+                    <b>Birth date</b>
+                </th>
+                <th>
+                    <b>Gender</b>
+                </th>
+                <th>
+                    <b>Address</b>
+                </th>
+                <th>
+                    <b>Action</b>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="stud in studentinDb">
+                <td>
+                    {{stud.fname}}
+                </td>
+                <td>
+                    {{stud.lname}}
+                </td>
+                <td>
+                    {{stud.bday| date : 'dd/MM/yyyy'}}
+                </td>
+                <td>
+                    {{stud.gender}}
+                </td>
+                <td>
+                    {{stud.address.firstline}} {{stud.address.district.District_Name}} {{stud.address.state.State_Desc}}
+                    {{stud.address.country.Country_Description}}
+                </td>
+                <td>
+                    <a href="#Add/{{stud._id.$oid}}" >Edit</a> | <a ng-click="fnDelete(stud._id.$oid)">
+                        Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
